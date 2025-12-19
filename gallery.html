@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Removida</title>
+    <style>
+        body { font-family: Arial, sans-serif; background:#000; color:#fff; display:flex; align-items:center; justify-content:center; height:100vh; margin:0 }
+        .box { text-align:center; max-width:600px }
+        .box a { color:#ff1493; text-decoration:none; font-weight:bold }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Página removida</h1>
+        <p>O conteúdo da galeria foi removido.</p>
+        <p><a href="index.html">Voltar para a página inicial</a></p>
+    </div>
+</body>
+</html>
+        document.querySelectorAll('.photo-frame img').forEach(img => {
+            img.addEventListener('click', function() {
+                const frame = this.closest('.photo-frame');
+                const emojis = ['❤️', '💕', '💖', '💗', '💝', '🌹', '💋', '⭐', '🎀', '✨'];
+                
+                // Criar 20 emojis caindo
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const emoji = document.createElement('div');
+                        emoji.className = 'emoji-rain';
+                        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                        
+                        // Posição aleatória dentro do frame
+                        const randomX = Math.random() * (frame.offsetWidth - 40);
+                        emoji.style.left = randomX + 'px';
+                        emoji.style.top = '0px';
+                        
+                        // Rotação aleatória
+                        emoji.style.setProperty('--rotation', Math.random() * 360 + 'deg');
+                        
+                        frame.appendChild(emoji);
+                        
+                        // Remover emoji após animação
+                        setTimeout(() => {
+                            emoji.remove();
+                        }, 2000);
+                    }, i * 50);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
